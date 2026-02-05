@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CliniVet Buenos Aires | Medicina Veterinaria de Vanguardia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              serif: ['"DM Serif Display"', 'Georgia', 'serif'],
+              sans: ['"Outfit"', 'system-ui', 'sans-serif'],
+              mono: ['"JetBrains Mono"', 'monospace'],
+            },
+            colors: {
+              vet: {
+                'blue-deep': '#1B3A91',
+                'blue-dark': '#0F2847',
+                'blue': '#2B4C8C',
+                'blue-soft': '#5A7FB5',
+                'blue-pastel': '#B8D4E8',
+                'blue-light': '#EDF4FA',
+
+                'orange-deep': '#E85D2A',
+                'orange': '#F07D4F',
+                'orange-soft': '#F5A882',
+                'orange-pastel': '#FECDB2',
+                'orange-light': '#FFF6EF',
+
+                'yellow-deep': '#F4B942',
+                'yellow': '#F5C84C',
+                'yellow-soft': '#F9D97F',
+                'yellow-pastel': '#FEF3D0',
+                'yellow-light': '#FFFBEB',
+
+                'cream': '#FAFAF7',
+                'dark': '#0C1B2E',
+                'warm': '#F7F4F0',
+              }
+            },
+            backgroundImage: {
+              'noise': "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.04%22/%3E%3C/svg%3E')",
+              'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+            },
+            boxShadow: {
+              'glow-orange': '0 0 60px rgba(232, 93, 42, 0.25)',
+              'glow-blue': '0 0 60px rgba(27, 58, 145, 0.15)',
+              'glow-yellow': '0 0 50px rgba(244, 185, 66, 0.2)',
+              'soft': '0 2px 24px rgba(15, 40, 71, 0.06)',
+              'card': '0 4px 40px rgba(15, 40, 71, 0.08)',
+              'card-hover': '0 20px 60px rgba(15, 40, 71, 0.12)',
+              'elevated': '0 40px 80px -20px rgba(15, 40, 71, 0.15)',
+              'inner-glow': 'inset 0 1px 0 rgba(255,255,255,0.5)',
+            },
+            letterSpacing: {
+              'ultra': '0.25em',
+              'mega': '0.35em',
+            },
+            borderRadius: {
+              '4xl': '2rem',
+              '5xl': '2.5rem',
+            },
+            fontSize: {
+              'display': ['clamp(3rem, 8vw, 7rem)', { lineHeight: '1.02', letterSpacing: '-0.03em' }],
+              'display-sm': ['clamp(2rem, 5vw, 4rem)', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+            },
+          }
+        }
+      }
+    </script>
+    <style>
+      /* === ROOT VARIABLES === */
+      :root {
+        --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+        --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+        --transition-base: 0.4s var(--ease-out-expo);
+        --transition-slow: 0.8s var(--ease-out-expo);
+        --transition-fast: 0.2s var(--ease-out-expo);
+      }
+
+      /* === GLOBAL === */
+      * { cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><circle cx="10" cy="10" r="8" fill="none" stroke="%231B3A91" stroke-width="1.5" opacity="0.6"/><circle cx="10" cy="10" r="2" fill="%23E85D2A"/></svg>') 10 10, auto; }
+      a, button, [role="button"], input, select, textarea, label { cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><circle cx="12" cy="12" r="10" fill="%23E85D2A" opacity="0.15"/><circle cx="12" cy="12" r="4" fill="%23E85D2A"/></svg>') 12 12, pointer; }
+
+      html {
+        scroll-behavior: smooth;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        transition: background-color 0.5s ease, color 0.3s ease;
+      }
+
+      body {
+        background: #FAFAF7;
+        color: #0F2847;
+        overflow-x: hidden;
+        font-feature-settings: "ss01", "ss02", "cv01";
+        transition: background-color 0.5s ease, color 0.3s ease;
+      }
+
+      /* === DARK MODE OVERRIDES === */
+      html.dark body {
+        background: #0A1628;
+        color: #E2E8F0;
+      }
+
+      html.dark ::selection {
+        background: rgba(232, 93, 42, 0.25);
+        color: #E2E8F0;
+      }
+
+      html.dark * { cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><circle cx="10" cy="10" r="8" fill="none" stroke="%235A7FB5" stroke-width="1.5" opacity="0.6"/><circle cx="10" cy="10" r="2" fill="%23F4845F"/></svg>') 10 10, auto; }
+      html.dark a, html.dark button, html.dark [role="button"], html.dark input, html.dark select, html.dark textarea, html.dark label { cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><circle cx="12" cy="12" r="10" fill="%23F4845F" opacity="0.15"/><circle cx="12" cy="12" r="4" fill="%23F4845F"/></svg>') 12 12, pointer; }
+
+      html.dark .glass {
+        background: rgba(12, 27, 46, 0.75);
+        backdrop-filter: blur(20px) saturate(1.8);
+        -webkit-backdrop-filter: blur(20px) saturate(1.8);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      html.dark .bg-gradient-animated {
+        background: linear-gradient(-45deg, #0A1628, #0F1E33, #111D30, #0A1628);
+        background-size: 400% 400%;
+        animation: gradient 20s ease infinite;
+      }
+
+      html.dark .shadow-colored { box-shadow: 0 20px 60px -15px rgba(232, 93, 42, 0.15); }
+      html.dark .shadow-colored-blue { box-shadow: 0 20px 60px -15px rgba(90, 127, 181, 0.1); }
+
+      ::selection {
+        background: rgba(232, 93, 42, 0.15);
+        color: #0F2847;
+      }
+
+      /* === SCROLLBAR CUSTOM === */
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: rgba(15, 40, 71, 0.15); border-radius: 99px; }
+      ::-webkit-scrollbar-thumb:hover { background: rgba(232, 93, 42, 0.3); }
+
+      html.dark ::-webkit-scrollbar-thumb { background: rgba(226, 232, 240, 0.15); }
+      html.dark ::-webkit-scrollbar-thumb:hover { background: rgba(244, 132, 95, 0.3); }
+      .hide-scrollbar::-webkit-scrollbar { display: none; }
+      .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+      /* === ANIMATED GRADIENT BG === */
+      .bg-gradient-animated {
+        background: linear-gradient(-45deg, #EDF4FA, #FEF3D0, #FFF6EF, #FAFAF7);
+        background-size: 400% 400%;
+        animation: gradient 20s ease infinite;
+      }
+      @keyframes gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+
+      /* === GLASSMORPHISM === */
+      .glass {
+        background: rgba(255, 255, 255, 0.65);
+        backdrop-filter: blur(20px) saturate(1.8);
+        -webkit-backdrop-filter: blur(20px) saturate(1.8);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+      .glass-dark {
+        background: rgba(12, 27, 46, 0.75);
+        backdrop-filter: blur(20px) saturate(1.8);
+        -webkit-backdrop-filter: blur(20px) saturate(1.8);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      /* === PREMIUM SHADOWS === */
+      .shadow-colored { box-shadow: 0 20px 60px -15px rgba(232, 93, 42, 0.2); }
+      .shadow-colored-blue { box-shadow: 0 20px 60px -15px rgba(27, 58, 145, 0.15); }
+
+      /* === TEXT GRADIENT ANIMATION === */
+      .text-gradient-animated {
+        background: linear-gradient(90deg, #E85D2A, #F4B942, #E85D2A);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: textGradient 4s linear infinite;
+      }
+      @keyframes textGradient {
+        0% { background-position: 0% center; }
+        100% { background-position: 200% center; }
+      }
+
+      /* === MAGNETIC HOVER === */
+      .magnetic-hover {
+        transition: transform var(--transition-base);
+        will-change: transform;
+      }
+
+      /* === LINE REVEAL EFFECT === */
+      .line-reveal {
+        position: relative;
+        overflow: hidden;
+      }
+      .line-reveal::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, #E85D2A, #F4B942);
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform var(--transition-base);
+      }
+      .line-reveal:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+
+      /* === SECTION DIVIDER === */
+      .section-divider {
+        position: relative;
+      }
+      .section-divider::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(232,93,42,0.4), transparent);
+      }
+
+      /* === PREMIUM LABEL === */
+      .premium-label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.65rem;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        opacity: 0.6;
+      }
+
+      /* === CARD SHINE EFFECT === */
+      .card-shine {
+        position: relative;
+        overflow: hidden;
+      }
+      .card-shine::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 60%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+        transition: left 0.6s var(--ease-out-expo);
+        z-index: 1;
+      }
+      .card-shine:hover::before {
+        left: 120%;
+      }
+
+      /* === ORGANIC BLOB === */
+      @keyframes blob {
+        0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        25% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+        50% { border-radius: 50% 60% 30% 60% / 30% 50% 70% 60%; }
+        75% { border-radius: 60% 40% 60% 40% / 70% 30% 50% 60%; }
+      }
+      .blob { animation: blob 12s ease-in-out infinite; }
+
+      /* === SMOOTH REVEAL === */
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in-up {
+        animation: fadeInUp 0.8s var(--ease-out-expo) forwards;
+      }
+
+      /* === IMAGE MASK REVEAL === */
+      .mask-reveal {
+        clip-path: inset(0 100% 0 0);
+        transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+      }
+      .mask-reveal.revealed {
+        clip-path: inset(0 0% 0 0);
+      }
+
+      /* === FLOATING ANIMATION === */
+      @keyframes float {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        33% { transform: translateY(-10px) rotate(1deg); }
+        66% { transform: translateY(5px) rotate(-1deg); }
+      }
+      .animate-float { animation: float 6s ease-in-out infinite; }
+      .animate-float-delayed { animation: float 6s ease-in-out 2s infinite; }
+      .animate-float-slow { animation: float 10s ease-in-out infinite; }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.2.0",
+    "react/": "https://esm.sh/react@18.2.0/",
+    "react-dom": "https://esm.sh/react-dom@18.2.0",
+    "react-dom/": "https://esm.sh/react-dom@18.2.0/",
+    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+    "lucide-react": "https://esm.sh/lucide-react@0.263.1?external=react,react-dom",
+    "framer-motion": "https://esm.sh/framer-motion@10.12.16?external=react,react-dom",
+    "gsap": "https://esm.sh/gsap@3.12.2",
+    "gsap/ScrollTrigger": "https://esm.sh/gsap@3.12.2/ScrollTrigger",
+    "gsap/": "https://esm.sh/gsap@^3.14.2/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
