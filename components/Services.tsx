@@ -68,28 +68,28 @@ export const Services: React.FC = () => {
       title: "Medicina Interna",
       description: "Diagnostico preciso mediante evaluacion integral y tecnologia avanzada para detectar patologias complejas.",
       icon: <Stethoscope size={28} />,
-      image: "/Imagenes/imagen clinivet 4.png"
+      image: "/Imagenes/clinivet-4.png"
     },
     {
       id: 2,
       title: "Cirugia Avanzada",
       description: "Quirofanos de ultima generacion para procedimientos de tejidos blandos y ortopedia con monitoreo constante.",
       icon: <Scissors size={28} />,
-      image: "/Imagenes/imagen clinivet 5.png"
+      image: "/Imagenes/clinivet-5.png"
     },
     {
       id: 3,
       title: "Imagenologia Digital",
       description: "Rayos X digital y ecografia Doppler para ver lo invisible y asegurar un tratamiento efectivo.",
       icon: <ScanLine size={28} />,
-      image: "/Imagenes/imagen clinivet 6.png"
+      image: "/Imagenes/clinivet-6.png"
     },
     {
       id: 4,
       title: "Laboratorio Clinico",
       description: "Resultados en tiempo real con nuestro laboratorio in-house para emergencias y chequeos rutinarios.",
       icon: <Microscope size={28} />,
-      image: "/Imagenes/imagen clinivet 7.png"
+      image: "/Imagenes/clinivet-7.png"
     }
   ];
 

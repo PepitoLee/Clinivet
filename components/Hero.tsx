@@ -343,12 +343,12 @@ export const Hero: React.FC = () => {
                 transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
               >
                 <img
-                  src="/Imagenes/Hero fondo version escritorio.jpeg"
+                  src="/Imagenes/hero-escritorio.jpeg"
                   alt="Veterinaria CliniVet - Cuidado profesional para tu mascota"
                   className="hidden md:block w-full h-[520px] lg:h-[620px] object-cover"
                 />
                 <img
-                  src="/Imagenes/Hero fondo Versión mobil.png"
+                  src="/Imagenes/hero-mobil.png"
                   alt="Veterinaria CliniVet"
                   className="md:hidden w-full h-[50vh] object-cover"
                 />

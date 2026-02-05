@@ -11,7 +11,7 @@ const doctors: Doctor[] = [
     id: 1,
     name: "Dr. Ana Silva",
     specialty: "Cirugia Ortopedica",
-    image: "/Imagenes/imagen clinivet.png",
+    image: "/Imagenes/clinivet-1.png",
     description: "Especialista en reconstruccion y traumatologia compleja con 10 anos de experiencia.",
     schedule: "Lun - Vie"
   },
@@ -19,7 +19,7 @@ const doctors: Doctor[] = [
     id: 2,
     name: "Dr. Carlos Ruiz",
     specialty: "Cardiologia",
-    image: "/Imagenes/imagen clinivet 8.png",
+    image: "/Imagenes/clinivet-8.png",
     description: "Pionero en intervenciones cardiacas minimamente invasivas para pequenas especies.",
     schedule: "Mar - Sab"
   },
@@ -27,7 +27,7 @@ const doctors: Doctor[] = [
     id: 3,
     name: "Dra. Elena Vega",
     specialty: "Oncologia",
-    image: "/Imagenes/imagen clinivet 9.png",
+    image: "/Imagenes/clinivet-9.png",
     description: "Enfoque compasivo y cientifico para el tratamiento del cancer animal.",
     schedule: "Lun - Jue"
   },
@@ -35,7 +35,7 @@ const doctors: Doctor[] = [
     id: 4,
     name: "Dr. Marco Polo",
     specialty: "Exoticos",
-    image: "/Imagenes/imagen clinivet 2.png",
+    image: "/Imagenes/clinivet-2.png",
     description: "Experto en el manejo de aves, reptiles y pequenos mamiferos.",
     schedule: "Vie - Dom"
   },
@@ -43,7 +43,7 @@ const doctors: Doctor[] = [
     id: 5,
     name: "Dra. Sofia L.",
     specialty: "Dermatologia",
-    image: "/Imagenes/imagen clinivet 3.png",
+    image: "/Imagenes/clinivet-3.png",
     description: "Soluciones avanzadas para alergias complejas y condiciones de la piel.",
     schedule: "Lun - Vie"
   }

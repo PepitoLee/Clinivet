@@ -287,7 +287,7 @@ export const About: React.FC = () => {
                 className="col-span-7 h-[280px] md:h-[460px] rounded-4xl overflow-hidden shadow-elevated relative group"
               >
                 <motion.img
-                  src="/Imagenes/imagen clinivet 2.png"
+                  src="/Imagenes/clinivet-2.png"
                   className="w-full h-full object-cover transition-transform duration-700"
                   alt="CliniVet atencion veterinaria profesional"
                   style={{ transformOrigin: 'center center' }}
@@ -307,7 +307,7 @@ export const About: React.FC = () => {
                 className="col-span-5 h-[200px] md:h-[340px] rounded-4xl overflow-hidden shadow-card mt-16 md:mt-24 relative group"
               >
                 <motion.img
-                  src="/Imagenes/imagen clinivet 3.png"
+                  src="/Imagenes/clinivet-3.png"
                   className="w-full h-full object-cover transition-transform duration-700"
                   alt="CliniVet equipo medico veterinario"
                   style={{ transformOrigin: 'center center' }}
