@@ -18,14 +18,6 @@ const AppContent: React.FC = () => {
 
   return (
     <div className={`font-sans antialiased relative transition-colors duration-500 ${isDark ? 'text-slate-200' : 'text-vet-blue-dark'}`}>
-      {/* Subtle noise texture for organic premium feel */}
-      <div className="fixed inset-0 z-[60] pointer-events-none opacity-[0.35] mix-blend-overlay bg-noise" />
-
-      {/* Ambient gradient orbs */}
-      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className={`absolute -top-[40vh] -right-[20vw] w-[80vw] h-[80vh] rounded-full blur-[120px] animate-float-slow ${isDark ? 'bg-vet-orange-deep/[0.05]' : 'bg-vet-orange-deep/[0.03]'}`} />
-        <div className={`absolute -bottom-[30vh] -left-[20vw] w-[70vw] h-[70vh] rounded-full blur-[120px] animate-float-delayed ${isDark ? 'bg-vet-blue-deep/[0.06]' : 'bg-vet-blue-deep/[0.04]'}`} />
-      </div>
 
       <Navbar />
 

@@ -590,7 +590,7 @@ export const Footer: React.FC = () => {
   const creditRef = useRef<HTMLDivElement>(null);
 
   return (
-    <footer id="contact" className="bg-vet-dark text-white relative overflow-hidden">
+    <footer id="contact" className="bg-vet-dark text-white relative overflow-hidden z-10">
 
       {/* === TOP CTA SECTION === */}
       <div className="relative py-28 md:py-36">

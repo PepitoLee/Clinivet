@@ -18,7 +18,7 @@ export const Shop: React.FC = () => {
   }, [activeCategory]);
 
   return (
-    <section id="shop" className={`py-24 section-divider relative overflow-hidden z-0 transition-colors duration-500 ${isDark ? 'bg-[#0F1E33]' : 'bg-vet-warm'}`}>
+    <section id="shop" className={`py-24 section-divider relative overflow-hidden z-10 transition-colors duration-500 ${isDark ? 'bg-[#0F1E33]' : 'bg-vet-warm'}`}>
       <div className="max-w-[1400px] mx-auto px-6 relative z-10">
         {/* Header */}
         <motion.div

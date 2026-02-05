@@ -1,10 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence, useInView, useScroll, useTransform } from 'framer-motion';
-import { Calendar, ArrowRight, ArrowUpRight, Clock, Award, Users, Shield, Star, Heart, Play } from 'lucide-react';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { Calendar, ArrowRight, Shield, Star, Heart } from 'lucide-react';
 import { useModal } from '../context/ModalContext';
 import { useTheme } from '../context/ThemeContext';
-import gsap from 'gsap';
-
 // ============================================
 // ANIMATED COUNTER
 // ============================================
@@ -62,40 +60,7 @@ const testimonials = [
 export const Hero: React.FC = () => {
   const { openModal } = useModal();
   const { isDark } = useTheme();
-  const heroRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const [mousePos, setMousePos] = useState({ x: 0.5, y: 0.5 });
-
-  // Scroll parallax
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"]
-  });
-  const imageY = useTransform(scrollYProgress, [0, 1], [0, 120]);
-  const contentY = useTransform(scrollYProgress, [0, 1], [0, -40]);
-  const overlayOpacity = useTransform(scrollYProgress, [0, 0.5], [0, 0.3]);
-
-  // Mouse tracking for 3D
-  useEffect(() => {
-    const container = imageRef.current;
-    if (!container) return;
-    const handleMove = (e: MouseEvent) => {
-      const rect = container.getBoundingClientRect();
-      setMousePos({
-        x: (e.clientX - rect.left) / rect.width,
-        y: (e.clientY - rect.top) / rect.height
-      });
-    };
-    const handleLeave = () => setMousePos({ x: 0.5, y: 0.5 });
-    container.addEventListener('mousemove', handleMove);
-    container.addEventListener('mouseleave', handleLeave);
-    return () => {
-      container.removeEventListener('mousemove', handleMove);
-      container.removeEventListener('mouseleave', handleLeave);
-    };
-  }, []);
-
   // Testimonial auto-rotation
   useEffect(() => {
     const timer = setInterval(() => {
@@ -103,9 +68,6 @@ export const Hero: React.FC = () => {
     }, 5000);
     return () => clearInterval(timer);
   }, []);
-
-  const rotateX = (mousePos.y - 0.5) * -6;
-  const rotateY = (mousePos.x - 0.5) * 6;
 
   // Stagger animation for heading lines
   const lineVariants = {
@@ -123,30 +85,18 @@ export const Hero: React.FC = () => {
 
   return (
     <section
-      ref={heroRef}
       id="hero"
       className={`relative min-h-screen w-full overflow-hidden transition-colors duration-500 ${isDark ? 'bg-[#0A1628]' : 'bg-vet-cream'}`}
     >
-      {/* === AMBIENT BACKGROUND === */}
-      <div className="absolute inset-0">
-        {/* Subtle grid */}
+      {/* === AMBIENT BACKGROUND (static, no animations) === */}
+      <div className="absolute inset-0 pointer-events-none">
         <div
-          className="absolute inset-0 opacity-[0.025]"
-          style={{
-            backgroundImage: `radial-gradient(circle, rgba(15,40,71,0.3) 1px, transparent 1px)`,
-            backgroundSize: '32px 32px'
-          }}
-        />
-        {/* Warm gradient orbs */}
-        <motion.div
-          className="absolute w-[60vw] h-[60vw] rounded-full blur-[150px] opacity-40 blob"
+          className="absolute w-[60vw] h-[60vw] rounded-full blur-[150px] opacity-30"
           style={{ top: '-20%', right: '-15%', background: 'radial-gradient(circle, rgba(232,93,42,0.12), transparent 70%)' }}
-          animate={{ scale: [1, 1.1, 1] }}
-          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
         />
-        <motion.div
-          className="absolute w-[50vw] h-[50vw] rounded-full blur-[120px] opacity-30 blob"
-          style={{ bottom: '-10%', left: '-10%', background: 'radial-gradient(circle, rgba(27,58,145,0.08), transparent 70%)', animationDelay: '4s' }}
+        <div
+          className="absolute w-[50vw] h-[50vw] rounded-full blur-[120px] opacity-20"
+          style={{ bottom: '-10%', left: '-10%', background: 'radial-gradient(circle, rgba(27,58,145,0.08), transparent 70%)' }}
         />
       </div>
 
@@ -155,7 +105,7 @@ export const Hero: React.FC = () => {
         <div className="grid lg:grid-cols-[1fr,1.1fr] gap-12 lg:gap-8 items-center w-full">
 
           {/* === LEFT: CONTENT === */}
-          <motion.div style={{ y: contentY }} className="order-2 lg:order-1">
+          <div className="order-2 lg:order-1">
 
             {/* Premium label */}
             <motion.div
@@ -165,11 +115,7 @@ export const Hero: React.FC = () => {
               className="flex items-center gap-3 mb-8"
             >
               <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-vet-orange-deep/[0.08] border border-vet-orange-deep/10">
-                <motion.span
-                  className="w-1.5 h-1.5 rounded-full bg-vet-orange-deep"
-                  animate={{ scale: [1, 1.5, 1], opacity: [1, 0.5, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
+                <span className="w-1.5 h-1.5 rounded-full bg-vet-orange-deep" />
                 <span className="font-mono text-[0.6rem] tracking-[0.2em] uppercase text-vet-orange-deep font-medium">
                   Medicina Veterinaria Premium
                 </span>
@@ -230,13 +176,7 @@ export const Hero: React.FC = () => {
                 <span className="relative z-10 flex items-center gap-3">
                   <Calendar size={17} />
                   <span>Agendar Cita</span>
-                  <motion.span
-                    className="inline-block"
-                    animate={{ x: [0, 4, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                  >
-                    <ArrowRight size={17} />
-                  </motion.span>
+                  <ArrowRight size={17} />
                 </span>
                 {/* Hover sweep */}
                 <div className="absolute inset-0 bg-gradient-to-r from-vet-orange-deep to-vet-orange translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" />
@@ -282,10 +222,10 @@ export const Hero: React.FC = () => {
                 </div>
               ))}
             </motion.div>
-          </motion.div>
+          </div>
 
           {/* === RIGHT: IMAGE COMPOSITION === */}
-          <div className="order-1 lg:order-2 relative" ref={imageRef}>
+          <div className="order-1 lg:order-2 relative">
 
             {/* Floating trust badges */}
             <div className="hidden lg:block">
@@ -324,50 +264,36 @@ export const Hero: React.FC = () => {
               </motion.div>
             </div>
 
-            {/* Main Image with 3D tilt */}
+            {/* Main Image */}
             <motion.div
               initial={{ clipPath: 'inset(0 100% 0 0)', opacity: 0 }}
               animate={{ clipPath: 'inset(0 0% 0 0)', opacity: 1 }}
               transition={{ duration: 1.4, delay: 0.4, ease: [0.77, 0, 0.175, 1] }}
-              style={{
-                rotateX,
-                rotateY,
-                transformStyle: 'preserve-3d',
-                y: imageY,
-              }}
               className="relative rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden shadow-elevated"
             >
-              {/* Breathing image */}
-              <motion.div
-                animate={{ scale: [1, 1.03, 1] }}
-                transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-              >
+              <div>
                 <img
-                  src="/Imagenes/hero-escritorio.jpeg"
+                  src="/Imagenes/hero-escritorio.webp"
                   alt="Veterinaria CliniVet - Cuidado profesional para tu mascota"
                   className="hidden md:block w-full h-[520px] lg:h-[620px] object-cover"
                 />
                 <img
-                  src="/Imagenes/hero-mobil.png"
+                  src="/Imagenes/hero-mobil.webp"
                   alt="Veterinaria CliniVet"
                   className="md:hidden w-full h-[50vh] object-cover"
                 />
-              </motion.div>
+              </div>
 
               {/* Gradient overlays */}
               <div className="absolute inset-0 bg-gradient-to-t from-vet-dark/80 via-vet-dark/10 to-transparent" />
               <div className="absolute inset-0 bg-gradient-to-r from-vet-dark/20 to-transparent" />
 
-              {/* Heartbeat pulse */}
-              <motion.div
-                className="absolute top-6 right-6 z-20"
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              >
+              {/* Heart icon */}
+              <div className="absolute top-6 right-6 z-20">
                 <div className="w-11 h-11 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20">
                   <Heart size={20} className="text-white fill-white/40" />
                 </div>
-              </motion.div>
+              </div>
 
               {/* Testimonial Overlay */}
               <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
@@ -422,33 +348,17 @@ export const Hero: React.FC = () => {
               </div>
             </motion.div>
 
-            {/* Decorative elements */}
-            <div className="absolute -bottom-4 -left-4 w-20 h-20 rounded-full bg-vet-orange-pastel/50 blur-xl animate-float hidden lg:block" />
-            <div className="absolute -top-2 right-1/4 w-14 h-14 rounded-full bg-vet-blue-pastel/40 blur-xl animate-float-delayed hidden lg:block" />
           </div>
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 hidden lg:flex flex-col items-center gap-2"
-      >
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 hidden lg:flex flex-col items-center gap-2">
         <span className={`font-mono text-[0.55rem] tracking-[0.3em] uppercase ${isDark ? 'text-slate-500' : 'text-vet-blue-dark/30'}`}>Scroll</span>
-        <motion.div
-          className={`w-5 h-8 rounded-full border flex justify-center pt-1.5 ${isDark ? 'border-slate-600' : 'border-vet-blue-dark/15'}`}
-          animate={{ opacity: [0.5, 1, 0.5] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <motion.div
-            className="w-1 h-1.5 bg-vet-orange-deep rounded-full"
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </motion.div>
-      </motion.div>
+        <div className={`w-5 h-8 rounded-full border flex justify-center pt-1.5 ${isDark ? 'border-slate-600' : 'border-vet-blue-dark/15'}`}>
+          <div className="w-1 h-1.5 bg-vet-orange-deep rounded-full" />
+        </div>
+      </div>
 
       {/* Bottom fade */}
       <div className={`absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t to-transparent pointer-events-none z-20 ${isDark ? 'from-[#0A1628]' : 'from-vet-cream'}`} />

@@ -5,55 +5,55 @@ import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
 const galleryImages = [
   {
     id: 1,
-    src: '/Imagenes/clinivet-1.png',
+    src: '/Imagenes/clinivet-1.webp',
     alt: 'CliniVet - Instalaciones',
     category: 'instalaciones',
   },
   {
     id: 2,
-    src: '/Imagenes/clinivet-2.png',
+    src: '/Imagenes/clinivet-2.webp',
     alt: 'CliniVet - Atención',
     category: 'atencion',
   },
   {
     id: 3,
-    src: '/Imagenes/clinivet-3.png',
+    src: '/Imagenes/clinivet-3.webp',
     alt: 'CliniVet - Equipo',
     category: 'equipo',
   },
   {
     id: 4,
-    src: '/Imagenes/clinivet-4.png',
+    src: '/Imagenes/clinivet-4.webp',
     alt: 'CliniVet - Servicios',
     category: 'servicios',
   },
   {
     id: 5,
-    src: '/Imagenes/clinivet-5.png',
+    src: '/Imagenes/clinivet-5.webp',
     alt: 'CliniVet - Cuidado',
     category: 'cuidado',
   },
   {
     id: 6,
-    src: '/Imagenes/clinivet-6.png',
+    src: '/Imagenes/clinivet-6.webp',
     alt: 'CliniVet - Mascotas',
     category: 'mascotas',
   },
   {
     id: 7,
-    src: '/Imagenes/clinivet-7.png',
+    src: '/Imagenes/clinivet-7.webp',
     alt: 'CliniVet - Consulta',
     category: 'consulta',
   },
   {
     id: 8,
-    src: '/Imagenes/clinivet-8.png',
+    src: '/Imagenes/clinivet-8.webp',
     alt: 'CliniVet - Tratamiento',
     category: 'tratamiento',
   },
   {
     id: 9,
-    src: '/Imagenes/clinivet-9.png',
+    src: '/Imagenes/clinivet-9.webp',
     alt: 'CliniVet - Bienestar',
     category: 'bienestar',
   },
@@ -131,6 +131,7 @@ export const Gallery: React.FC = () => {
                   src={image.src}
                   alt={image.alt}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
                 />
               </div>
 
